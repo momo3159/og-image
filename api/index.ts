@@ -3,7 +3,7 @@ import { parseRequest } from "./_lib/parser";
 import { getScreenshot } from "./_lib/chromium";
 import { getHtml } from "./_lib/template";
 
-const isDev = !process.env.AWS_REGION || false;
+const isDev = !process.env.AWS_REGION;
 const isHtmlDebug = process.env.OG_HTML_DEBUG === "1";
 
 export default async function handler(
@@ -11,8 +11,8 @@ export default async function handler(
   res: ServerResponse
 ) {
   try {
-    const parsedReq = parseRequest(req) ?? "";
-    const html = getHtml(parsedReq) ?? "";
+    const parsedReq = parseRequest(req);
+    const html = getHtml(parsedReq);
     if (isHtmlDebug) {
       res.setHeader("Content-Type", "text/html");
       res.end(html);

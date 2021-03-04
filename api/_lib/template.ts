@@ -15,7 +15,10 @@ const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
 const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString(
   "base64"
 );
-
+const dot = readFileSync(`${__dirname}/../_fonts/DotGothic16-Regular.ttf`).toString(
+    "base64"
+  );
+  
 function getCss(theme: string, fontSize: string) {
   let background = "white";
   let foreground = "black";
@@ -46,6 +49,12 @@ function getCss(theme: string, fontSize: string) {
         font-style: normal;
         font-weight: normal;
         src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
+      }
+      @font-face {
+        font-family: 'DotGothic';
+        font-style: normal;
+        font-weight: normal;
+        src: url(data:font/tff;charset=utf-8;base64,${dot})  format("truetype");
       }
 
     body {
